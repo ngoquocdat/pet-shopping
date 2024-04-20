@@ -5,7 +5,7 @@ interface IProductData {
   id: number;
 }
 
-export const ProductDetails = () => {
+export const VehicleDetails = () => {
   const { id } = useLoaderData() as IProductData;
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ export const ProductDetails = () => {
 
   return (
     <div>
-      <span>ProductDetails: {id}</span>
+      <span>Vehicle Details: {id}</span>
       <button onClick={() => navigate(-1)}>Go back</button>
     </div>
   );

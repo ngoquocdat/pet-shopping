@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import LinkItem from "./NavItem";
 
 import "./styles.scss";
+import styled from "styled-components";
 
 interface INavItem {
   path: string;
@@ -12,11 +13,15 @@ interface INavItem {
 const NavItems: INavItem[] = [
   {
     path: "/",
-    label: "Home",
+    label: "Vehicles",
   },
   {
-    path: "/products",
-    label: "Products",
+    path: "/type/sport",
+    label: "Sport",
+  },
+  {
+    path: "/type/classic",
+    label: "Classic",
   },
   {
     path: "/login",
@@ -24,9 +29,19 @@ const NavItems: INavItem[] = [
   },
 ];
 
+const NavContainer = styled.ul`
+  width: 100%;
+  height: 50px;
+  border: solid 1px;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  justify-content: left;
+  align-items: center;
+`
 export const NavBar = () => {
   return (
-    <ul className="navigation-bar">
+    <NavContainer className="navigation-bar">
       {NavItems.map((link: INavItem) => {
         return (
           <LinkItem>
@@ -34,6 +49,6 @@ export const NavBar = () => {
           </LinkItem>
         );
       })}
-    </ul>
+    </NavContainer>
   );
 };

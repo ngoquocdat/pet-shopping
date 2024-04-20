@@ -1,17 +1,11 @@
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-// import { Login } from "../pages/Login";
-// import { Home } from "../pages/Home";
-// import { Products } from "../pages/products/Products";
-// import { ProductDetails } from "../pages/products/ProductDetails";
-// import { UnderMaintain } from '../pages/UnderMaintain';
-// import { LayoutComponent } from "../pages/LayoutComponent";
 
 const router = createBrowserRouter([
   {
     path: "/",
     async lazy() {
-      let { Layout } = await import("../pages/LayoutComponent");
+      let { Layout } = await import("../pages/Layout");
       return { Component: Layout };
     },
     children: [
@@ -19,29 +13,29 @@ const router = createBrowserRouter([
       {
         index: true,
         async lazy() {
-          let { Home } = await import("../pages/Home");
-          return { Component: Home };
+          let { Vehicles } = await import("../pages/Vehicles");
+          return { Component: Vehicles };
         },
       },
       // Sub routes:
       {
-        path: "products",
+        path: "type/:type",
         async lazy() {
-          let { Products } = await import("../pages/products/Products");
-          return { Component: Products };
+          let { VehicleTypes } = await import("../pages/products/VehicleTypes");
+          return { Component: VehicleTypes };
         },
-        loader: async () => {
+        loader: async ({ params }) => {
           // Fetch data:
-          return null;
+          return params;
         },
       },
       {
         path: "product/:id",
         async lazy() {
-          let { ProductDetails } = await import(
-            "../pages/products/ProductDetails"
+          let { VehicleDetails } = await import(
+            "../pages/products/VehicleDetails"
           );
-          return { Component: ProductDetails };
+          return { Component: VehicleDetails };
         },
         loader: async ({ params }) => {
           // Fetch data:

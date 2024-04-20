@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import { randomIntFromInterval } from "../../utils";
 import LinkItem from "../../components/navigation-bar/NavItem";
 
@@ -8,7 +8,9 @@ interface IItem {
   name: string;
 }
 
-export const Products = () => {
+export const VehicleTypes = () => {
+
+  const {type} = useParams();
   const items: IItem[] = [
     {
       id: randomIntFromInterval(1, 6),
@@ -24,14 +26,17 @@ export const Products = () => {
     },
   ];
 
+  useEffect(() => {
+    console.log('vehicle types: ', type)
+  }, [type])
+
   return (
     <div>
-      <span>Products</span>
       <ul>
         {items.map((i: IItem) => {
           return (
             <LinkItem className={`${i.name}-${i.id}`}>
-              <NavLink to={`/product/${i.id}`}>{i.name}</NavLink>
+              <NavLink to={`/vehicle/${i.id}`}>{i.name}</NavLink>
             </LinkItem>
           );
         })}
