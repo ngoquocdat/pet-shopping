@@ -23,7 +23,7 @@ function App() {
   console.dir(appElements);
 
   return (
-    <div className="App demo-app">
+    <div className="App demo-app" style={{margin: '20px'}}>
       <GlobalStyles />
       <Routing />
     </div>

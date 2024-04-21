@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LinkItem from "./NavItem";
 import styled from "styled-components";
 import { Logo } from "./LogoComponent/Logo";
@@ -37,19 +37,23 @@ const NavContainer = styled.ul`
   gap: 20px;
   justify-content: left;
   align-items: center;
-  margin-top: 35px;
+  margin: 20px 10px 10px 0px;
+  padding: 0px;
   background-color: rgb(236, 236, 236)
 `
 
 export const NavBar = () => {
+
+  const navigate = useNavigate()
   return (
     <>
       <NavContainer className="navigation-bar">
         <Logo />
         {NavItems.map((link: INavItem) => {
           return (
-            <LinkItem className="blob-btn">
-              <NavLink to={link.path}>{link.label}</NavLink>
+            <LinkItem className="blob-btn" onClick={() => navigate(link.path)}>
+              {link.label}
+              {/* <NavLink to={link.path}>{link.label}</NavLink> */}
               <span className="blob-btn__inner">
                 <span className="blob-btn__blobs">
                   <span className="blob-btn__blob"></span>
