@@ -1,0 +1,60 @@
+$anime-time: 4s;
+
+$box-size: 120px;
+$clip-distance: .05;
+$clip-size: $box-size * (1 + $clip-distance * 2);
+$path-width: 2px;
+$border-radius: 50%;
+
+$main-color: #69ca62;
+$offset: 3px;
+
+%full-fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.logo-animation {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img.logo {
+        // @extend %full-fill;
+        --offset: 3px;
+        width: $box-size;
+        height: $box-size;
+        margin: auto;
+        color: $main-color;
+        border-radius: $border-radius;
+        display: flex;
+        justify-content: center;
+    }
+
+    .fancy {
+        background: conic-gradient(transparent 270deg, white, transparent);
+        left: 25%;
+        transform: translate(-50%, -50%);
+        aspect-ratio: 1;
+        overflow: hidden;
+        animation: rotate 3.5s linear infinite;
+        height: 100%;
+        position: absolute;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) scale(1.4) rotate(0turn);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
+    }
+}
